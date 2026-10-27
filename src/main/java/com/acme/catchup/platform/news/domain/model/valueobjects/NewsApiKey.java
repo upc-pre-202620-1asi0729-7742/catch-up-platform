@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public record NewsApiKey(String value) {
     private static final int MAX_LENGTH = 256;
-    private static final Pattern ALLOWED_PATTERN = Pattern.compile("^[a-zA-Z0-9]+$");
+    private static final Pattern ALLOWED_PATTERN = Pattern.compile("^[A-Za-z0-9._:-]+$");
     private static final String NOT_BLANK_MESSAGE_KEY = "favorite.source.error.newsApiKey.notBlank";
     private static final String SIZE_MESSAGE_KEY = "favorite.source.error.newsApiKey.size";
     private static final String PATTERN_MESSAGE_KEY = "favorite.source.error.newsApiKey.pattern";
