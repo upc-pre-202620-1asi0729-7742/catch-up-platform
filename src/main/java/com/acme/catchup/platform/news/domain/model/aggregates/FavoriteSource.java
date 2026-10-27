@@ -1,5 +1,6 @@
 package com.acme.catchup.platform.news.domain.model.aggregates;
 
+import com.acme.catchup.platform.news.domain.model.commands.CreateFavoriteSourceCommand;
 import com.acme.catchup.platform.news.domain.model.valueobjects.NewsApiKey;
 import com.acme.catchup.platform.news.domain.model.valueobjects.SourceId;
 import com.acme.catchup.platform.news.infrastructure.persistence.jpa.converters.NewsApiKeyAttributeConverter;
@@ -40,4 +41,17 @@ public class FavoriteSource {
     @Column(nullable = false)
     @LastModifiedDate
     private Instant updatedAt;
+
+    protected FavoriteSource() {}
+
+    /**
+     * Creates a favorite source aggregate from a create command.
+     *
+     * @param command command containing the news API key and source ID
+     */
+    public FavoriteSource(CreateFavoriteSourceCommand command) {
+        this.newsApiKey = command.newsApiKey();
+        this.sourceId = command.sourceId();
+    }
+
 }
